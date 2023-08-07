@@ -5,25 +5,70 @@
 
 <h1>Travel</h1>
 
-<div id="div1" class="row d-flex"></div>
+<div id="div1" class="d-flex row"></div>
 
 @section Scripts{
     <script src="~/js/travel.js"></script>
-    <script>
+    @*<script>
         const datas = spots.CommonFormat.Section.map(spot=>{
-            const { stitle, xbody, xurl, idpt, file } = spot
+            const { stitle, xbody, xurl, idpt, file:{img:text}} = spot
             return(
                 `<div class= "card col-3" >
-                                <img src="${file.img.toLocaleString}"class="card-img-top" alt = "..." >
+                                 <img src="${text[0][1]}" class="card-img-top" alt = "..." >
                         <div class="card-body" >
                             <h5 class="card-title" > ${stitle} </h5>
                             <p class="card-text" > ${xbody}</p>
                             <a href = "${xurl}" class="btn btn-primary" > ${idpt} </a>
                          </div>
                 </div>`
-            )
+            )           
         })
-        $('#div1').html(datas).join("")
+        
+        $('#div1').html(datas)
+    </script>*@
+    <script>
+
+        const div1 = document.getElementById('div1');
+
+        for (let i = 0; i < spots.CommonFormat.Section.length; i++) {
+            const spot = spots.CommonFormat.Section[i];
+            const { stitle, xbody, xurl, idpt, file: { img } } = spot;
+
+            const cardHTML = document.createElement('div');
+            cardHTML.className = 'card col-3';
+
+            const image = document.createElement('img');
+            image.src = img[0].text;
+            image.alt = img[0]['@@description'];
+            image.className = 'card-img-top';
+
+            const cardBody = document.createElement('div');
+            cardBody.className = 'card-body';
+
+            const title = document.createElement('h5');
+            title.className = 'card-title';
+            title.textContent = stitle;
+
+            const text = document.createElement('p');
+            text.className = 'card-text';
+            text.textContent = xbody;
+
+            const link = document.createElement('a');
+            link.href = xurl;
+            link.className = 'btn btn-primary';
+            link.textContent = idpt;
+
+            cardBody.appendChild(title);
+            cardBody.appendChild(text);
+            cardBody.appendChild(link);
+
+            cardHTML.appendChild(image);
+            cardHTML.appendChild(cardBody);
+
+            div1.appendChild(cardHTML);
+        }
+
     </script>
+    
 }
 
