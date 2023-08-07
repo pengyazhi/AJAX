@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Travel";
+}
+
+<h1>Travel</h1>
+
+<div id="div1" class="row d-flex"></div>
+
+@section Scripts{
+    <script src="~/js/travel.js"></script>
+    <script>
+        const datas = spots.CommonFormat.Section.map(spot=>{
+            const { stitle, xbody, xurl, idpt, file } = spot
+            return(
+                `<div class= "card col-3" >
+                                <img src="${file.img.toLocaleString}"class="card-img-top" alt = "..." >
+                        <div class="card-body" >
+                            <h5 class="card-title" > ${stitle} </h5>
+                            <p class="card-text" > ${xbody}</p>
+                            <a href = "${xurl}" class="btn btn-primary" > ${idpt} </a>
+                         </div>
+                </div>`
+            )
+        })
+        $('#div1').html(datas).join("")
+    </script>
+}
+

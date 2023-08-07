@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+BT70LCR4fFGP9X86UvrHE6MNUUkbviXe2OO/htStZk=",
+  "Hash": "SxrXgwcVOA2tn2GfEwY7N48JNHH7xdX0d61kyrmkPI0=",
   "Source": "AJAX",
   "BasePath": "_content/AJAX",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\AJAX\\AJAX\\wwwroot\\js\\travel.js",
+      "SourceId": "AJAX",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\AJAX\\AJAX\\wwwroot\\",
+      "BasePath": "_content/AJAX",
+      "RelativePath": "js/travel.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\travel.js"
     },
     {
       "Identity": "C:\\AJAX\\AJAX\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

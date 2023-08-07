@@ -16,12 +16,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\AJAX\AJAX
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/AJAX/AJAX/Views/Home/First.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGaXJzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/AJAX/AJAX/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/AJAX/AJAX/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AJAX/AJAX/Views/Home/Travel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUcmF2ZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/AJAX/AJAX/Views/Shared/Error.cshtml]

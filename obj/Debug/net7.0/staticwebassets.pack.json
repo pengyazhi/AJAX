@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
+      "Id": "C:\\AJAX\\AJAX\\wwwroot\\js\\travel.js",
+      "PackagePath": "staticwebassets\\js\\travel.js"
+    },
+    {
       "Id": "C:\\AJAX\\AJAX\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
