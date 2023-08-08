@@ -5,47 +5,69 @@
 
 <h1>First</h1>
 <button id="btn1" class="btn btn-secondary">click</button>
+<button id="btn2" class="btn btn-danger">cancel</button>
+<img id="loading" src="~/gif/icons8-loading.gif" />
 <div id="div1" class="border"></div>
+
+@section Styles{
+    <style>
+        #loading{
+            display:none;
+        }
+    </style>
+}
+
 @section Scripts{
-    @*<script>
-        const btn = document.querySelector('#btn1')
-        const myDiv = document.querySelector('#div1')
-        //步驟一
+    <script>
         const xhr = new XMLHttpRequest();
+        const loading = document.querySelector('#loading');
+        const btn = document.querySelector('#btn1');
+        const btnCancel = document.querySelector('#btn2');
+        const myDiv = document.querySelector('#div1');
 
-        btn.addEventListener('click',()=>{
+        xhr.addEventListener('loadstart', () => {
+            btn.setAttribute('disabled', 'disabled')
+            btn.textContent = "執行中..."
+            loading.style.display = "inline"
+            myDiv.innerHTML += `<h3>Ajax開始</h3>`
+        })
+
+        xhr.addEventListener('loadend', () => {
+            btn.removeAttribute('disabled')
+            btn.textContent = "click"
+            loading.style.display = "none"
+            myDiv.innerHTML += `<h3>Ajax結束</h3>`
+        })
+        //timeout事件會根據timeout屬性的設定來觸發
+        xhr.addEventListener('timeout', () => {
+            myDiv.innerHTML += `<h3>伺服器忙碌中，請稍後再來</h3>`
+        })
+        //abort 事件是abort()方法被執行時會觸發
+        xhr.addEventListener('abort', () => {
+            myDiv.innerHTML += `<h3>您停止了程式的執行</h3>`
+        })
+        btnCancel.addEventListener('click', () => {
+            xhr.abort(); //停止 Ajax 程式的執行
+        })
+
+        btn.addEventListener('click', () => {
             //myDiv.innerHTML = "Button Click"
-            //步驟二 對伺服器發出要求(request)
-            xhr.open('GET','/api/index');
+
+            //步驟二對伺服器發出要求(Request)
+            xhr.open('GET', '/api/index');
+            xhr.timeout = 3000;
             xhr.send();
-
-            //步驟三 接收伺服器回傳的資料
-            xhr.addEventListener('load',()=>{
+            //步驟三接收伺服器回傳的資料
+            xhr.addEventListener('load', () => {
                 const data = xhr.responseText
-
-                //步驟四 讀取JSON XML 等需要轉譯的資料
-                //步驟五 顯示資料
-                myDiv.innerHTML = `<h3>${data}</h3>`
+                //步驟四讀資料 JSON XML
+                //步驟五顯示資料
+                myDiv.innerHTML += `<h3>${data}</h3>`
             })
         })
-    </script>*@
-
-    <script>
-        //步驟一
-        const xhr = new XMLHttpRequest();
-        $('#btn1').on('click', () => {
-            //步驟二 對伺服器發出要求(request)
-            xhr.open('GET', '/api/index');
-            xhr.send();
-
-            //步驟三 接收伺服器回傳的資料
-            xhr.onload = function () {
-                const data = xhr.responseText;
-                //步驟四 讀取JSON XML 等需要轉譯的資料
-                //步驟五 顯示資料
-                $('#div1').html(`<h3>${data}</h3>`);
-            }
-        })
     </script>
-
 }
+
+
+
+    

@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "register";
+}
+
+<h1>register</h1>
+@*<form action="~/api/getdemo" method="post">*@
+    <a id="link" href="https://www.google.com">google</a>
+<form name="userInfo" id="form1">
+<div class="mb-3">
+    <label for="UserName" class="form-label">UserName</label>
+        <input type="text" class="form-control" id="UserName" placeholder="請輸入您的名字" name="Name">
+</div>
+    <div class="mb-3">
+        <label for="UserName" class="form-label">UserEmail</label>
+        <input type="email" class="form-control" id="UserName" placeholder="請輸入您的Email" name="Email">
+    </div>
+<div class="mb-3">
+    <label for="UserAge" class="form-label">UserAge</label>
+        <input type="text" class="form-control" id="UserAge" placeholder="請輸入您的年紀" name="Age">
+</div>
+    <div class="mb-3">
+        <label for="formFile" class="form-label">選擇檔案</label>
+        <input class="form-control" type="file" id="file" name="file">
+    </div>
+<button id="btnConfirm" type="submit">送出</button>
+</form>
+<div id="divResult" class="alert alert-info">
+
+</div>
+
+@section Scripts{
+    <script>
+        //const txtName = document.getElementById('UserName');
+        //const txtAge = document.getElementById('UserAge');
+        const btnConfirm = document.getElementById('btnConfirm');
+        const divResult = document.getElementById('divResult');
+        const xhr = new XMLHttpRequest();
+        
+        btnConfirm.addEventListener('click',event=>{
+            //因為原本btnConfirm是submit,如果按下會送出並重新仔入此頁面
+        event.preventDefault();
+            //設定open時要使用POST方式,並使用ApiController中的getdemo() action
+            xhr.open('POST', '/api/register');
+            //設定RequestHeader的Content-Type
+            //xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            //拿取id的資料時要加上value
+            //xhr.send(`name=${txtName.value}&age=${txtAge.value}`);
+
+            const formData = new FormData(document.userInfo); //使用name找到form
+            //const formData = new FormData(document.querySelector('#form1')); 使用id找到form
+            xhr.send(formData);
+            xhr.addEventListener('load',()=>{
+            const data = xhr.responseText
+                divResult.innerHTML = data
+        })
+        })
+
+        const link = document.querySelector('#link');
+        link.addEventListener('click',abc=>{
+            if(!window.confirm('確定要離開嗎?')){
+                abc.preventDefault();
+            }
+        })
+    </script>
+}

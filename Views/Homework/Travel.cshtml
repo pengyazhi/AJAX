@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Travel";
+}
+
+<h1>Travel</h1>
+<div id="div1" class="d-flex row"></div>
+
+@section Scripts{
+    <script src="~/js/travel.js"></script>
+    <script>
+        const div1 = document.getElementById('div1');
+        for (let i = 0; i < spots.CommonFormat.Section.length; i++) {
+            const spot = spots.CommonFormat.Section[i];
+            const { stitle, xbody, xurl, idpt, file: { img } } = spot;
+            let imgUrl = img[0].text
+            let urlTetx = img[0]['@@description'];
+            div1.innerHTML +=
+                `<div class= "card col-3" >
+                              <img src="${imgUrl}" class="card-img-top" alt = "${urlTetx}" >
+                            <div class="card-body" >
+                                  <h5 class="card-title" > ${stitle} </h5>
+                                  <p class="card-text" > ${xbody}</p>
+                                   <a href = "${xurl}" class="btn btn-primary" > ${idpt} </a>
+                             </div>
+                      </div>`
+        }
+        
+    </script>
+}
