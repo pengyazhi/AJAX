@@ -28,6 +28,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZXdvcmtcVHJhdmVsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/AJAX/AJAX/Views/Home/Address.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRyZXNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/AJAX/AJAX/Views/Home/First.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGaXJzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -66,6 +70,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/AJAX/AJAX/Views/Members/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AJAX/AJAX/Views/Promise/Fetch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvbWlzZVxGZXRjaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AJAX/AJAX/Views/Promise/Promise.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvbWlzZVxQcm9taXNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/AJAX/AJAX/Views/Shared/Error.cshtml]

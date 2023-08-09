@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BTx6KXFGMCMvGIoiu2VsR4MphuAw6ivtDgo2ju/DkCc=",
+  "Hash": "c/zXdVQLbIxu1TkHQgM+kSBwnBuzUj3eGA45ab9mF2g=",
   "Source": "AJAX",
   "BasePath": "_content/AJAX",
   "Mode": "Default",
@@ -1222,6 +1222,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\妙蛙種子.png"
+    },
+    {
+      "Identity": "C:\\AJAX\\AJAX\\wwwroot\\uploads\\超級噴火龍Ｘ.png",
+      "SourceId": "AJAX",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\AJAX\\AJAX\\wwwroot\\",
+      "BasePath": "_content/AJAX",
+      "RelativePath": "uploads/超級噴火龍Ｘ.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\超級噴火龍Ｘ.png"
+    },
+    {
+      "Identity": "C:\\AJAX\\AJAX\\wwwroot\\uploads\\綿綿泡芙.png",
+      "SourceId": "AJAX",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\AJAX\\AJAX\\wwwroot\\",
+      "BasePath": "_content/AJAX",
+      "RelativePath": "uploads/綿綿泡芙.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\綿綿泡芙.png"
     },
     {
       "Identity": "C:\\AJAX\\AJAX\\wwwroot\\uploads\\螢幕擷取畫面 2023-08-01 095731.png",

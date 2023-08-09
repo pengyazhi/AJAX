@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "Fetch";
+}
+
+<h1>Fetch</h1>
+<h2 id="myH2"></h2>
+<img id="myImg" class="img-fluid"/>
+<ul id="list_city"></ul>
+@section Scripts {
+    <script>
+        //讀文字 .text()
+        fetch('@Url.Content("/api/index")')
+            .then(resopnse => resopnse.text())
+            .then(data => $('#myH2').html(data))
+
+            //讀JSON .json()
+        //const list_city = document.querySelector('#list_city')
+        //fetch('@Url.Content("/api/City")')
+        //.then(cities=>cities.json())
+        //.then(datas =>
+        //    {
+        //        const li = datas.map(e => `<li>${e}</li>`).join("")
+        //        list_city.innerHTML = li
+        //    })
+        //    //讀圖片(二進位) .blob()
+            
+        //fetch('@Url.Content("/api/getImgById/3")')
+        //.then(imgs=>imgs.blob())
+        //.then(pic=>{
+        //        const myImg = document.querySelector('#myImg')
+        //        myImg.src = URL.createObjectURL(pic)
+        //})
+        //讀JSON .json()
+        const list_city = document.querySelector('#list_city')
+        async function loadJSON(){
+            const cities = await fetch('@Url.Content("/api/City")')
+            const datas =await cities.json()
+            const lis = datas.map(e => `<li>${e}</li>`).join("")
+                    list_city.innerHTML = lis
+
+        }
+       
+        //讀圖片(二進位) .blob()
+        async function loadImage(){
+            const resopnes =  await fetch('@Url.Content("/api/getImgById/3")')
+            const pic = await resopnes.blob()
+                const myImg = document.querySelector('#myImg')
+                myImg.src = URL.createObjectURL(pic)
+        }
+        loadJSON();
+        loadImage();
+    </script>
+}

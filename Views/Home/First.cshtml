@@ -54,7 +54,10 @@
             //myDiv.innerHTML = "Button Click"
 
             //步驟二對伺服器發出要求(Request)
-            xhr.open('GET', '/api/index');
+            //xhr.open('GET', '/api/index');  開發時不會有問題,但佈署到雲端後可能會有問題
+            //xhr.open('GET', '~/api/index'); 一定有問題,因為Javascript看不懂"~"
+            //xhr.open('GET', @Url.Action("index","api")) 會自動修正路徑,但前面的參數是放acrtion,後面controller
+            xhr.open('GET','@Url.Content("/api/index")') //會自動在"/"前加上"~",比較直覺
             xhr.timeout = 3000;
             xhr.send();
             //步驟三接收伺服器回傳的資料

@@ -31,36 +31,53 @@
 
 @section Scripts{
     <script>
-        //const txtName = document.getElementById('UserName');
-        //const txtAge = document.getElementById('UserAge');
-        const btnConfirm = document.getElementById('btnConfirm');
-        const divResult = document.getElementById('divResult');
-        const xhr = new XMLHttpRequest();
+        ////const txtName = document.getElementById('UserName');
+        ////const txtAge = document.getElementById('UserAge');
+        //const btnConfirm = document.getElementById('btnConfirm');
+        //const divResult = document.getElementById('divResult');
+        //const xhr = new XMLHttpRequest();
         
-        btnConfirm.addEventListener('click',event=>{
-            //因為原本btnConfirm是submit,如果按下會送出並重新仔入此頁面
-        event.preventDefault();
-            //設定open時要使用POST方式,並使用ApiController中的getdemo() action
-            xhr.open('POST', '/api/register');
-            //設定RequestHeader的Content-Type
-            //xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            //拿取id的資料時要加上value
-            //xhr.send(`name=${txtName.value}&age=${txtAge.value}`);
+       // btnConfirm.addEventListener('click',event=>{
+        //    //因為原本btnConfirm是submit,如果按下會送出並重新仔入此頁面
+        //event.preventDefault();
+        //    //設定open時要使用POST方式,並使用ApiController中的getdemo() action
+        //    xhr.open('POST', '/api/register');
+        //    //設定RequestHeader的Content-Type
+        //    //xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        //    //拿取id的資料時要加上value
+        //    //xhr.send(`name=${txtName.value}&age=${txtAge.value}`);
 
-            const formData = new FormData(document.userInfo); //使用name找到form
-            //const formData = new FormData(document.querySelector('#form1')); 使用id找到form
-            xhr.send(formData);
-            xhr.addEventListener('load',()=>{
-            const data = xhr.responseText
-                divResult.innerHTML = data
-        })
-        })
+        //    const formData = new FormData(document.userInfo); //使用name找到form
+        //    //const formData = new FormData(document.querySelector('#form1')); 使用id找到form
+        //    xhr.send(formData);
+        //    xhr.addEventListener('load',()=>{
+        //    const data = xhr.responseText
+        //        divResult.innerHTML = data
+        //})
+        //})
 
-        const link = document.querySelector('#link');
-        link.addEventListener('click',abc=>{
-            if(!window.confirm('確定要離開嗎?')){
-                abc.preventDefault();
+        //const link = document.querySelector('#link');
+        //link.addEventListener('click',abc=>{
+        //    if(!window.confirm('確定要離開嗎?')){
+        //        abc.preventDefault();
+        //    }
+        //})
+            const btnConfirm = document.getElementById('btnConfirm');
+            btnConfirm.addEventListener('click', event => {
+                event.preventDefault();
+        const formData = new FormData(document.userInfo);
+        fetch('@Url.Content("/api/register")',{
+        body:formData,
+        method:"post"
+        })
+        .then(response=>{
+            if(response.ok){
+                alert('新增成功!')
+                        location.href = '@Url.Content("/Members/index")'
+            }else{
+                    alert('新增失敗,請確認資料')
             }
         })
+            })
     </script>
 }

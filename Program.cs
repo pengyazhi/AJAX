@@ -29,6 +29,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Homework}/{action=City}/{id?}");
+    pattern: "{controller=Promise}/{action=Fetch}/{id?}");
 
 app.Run();

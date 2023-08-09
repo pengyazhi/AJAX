@@ -11,7 +11,11 @@
     <script>
         const xhr = new XMLHttpRequest();
         const mydiv = document.getElementById('div1')
-        xhr.open("GET", "/api/getdemo?name=Amy");
+        //xhr.open("GET", "/api/getdemo?name=Amy");
+        const name ='jack'
+        const age =22
+        //xhr.open("GET", '@Url.Content("/api/getdemo")?name=${name}&age=${age}'); 
+        xhr.open("GET", `@Url.Content("/api/getdemo")?name=${name}&age=${age}`); //後面的參數?被放進去,在網頁上的路徑會變成?amp
         xhr.send()
 
         xhr.addEventListener('load',()=>{

@@ -281,8 +281,16 @@
       "PackagePath": "staticwebassets\\uploads\\妙蛙種子.png"
     },
     {
+      "Id": "C:\\AJAX\\AJAX\\wwwroot\\uploads\\綿綿泡芙.png",
+      "PackagePath": "staticwebassets\\uploads\\綿綿泡芙.png"
+    },
+    {
       "Id": "C:\\AJAX\\AJAX\\wwwroot\\uploads\\螢幕擷取畫面 2023-08-01 095731.png",
       "PackagePath": "staticwebassets\\uploads\\螢幕擷取畫面 2023-08-01 095731.png"
+    },
+    {
+      "Id": "C:\\AJAX\\AJAX\\wwwroot\\uploads\\超級噴火龍Ｘ.png",
+      "PackagePath": "staticwebassets\\uploads\\超級噴火龍Ｘ.png"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.AJAX.Microsoft.AspNetCore.StaticWebAssets.props",
