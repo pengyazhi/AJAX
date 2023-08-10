@@ -20,5 +20,6 @@ namespace AJAX.Controllers
         {
             return View();
         }
+
     }
 }

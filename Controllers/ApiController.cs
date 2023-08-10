@@ -35,22 +35,24 @@ namespace AJAX.Controllers
         }
         public IActionResult register(Members member, IFormFile file)
         {
-            string filePath = Path.Combine(_host.WebRootPath, "uploads", file.FileName);
-            using (var filestrem = new FileStream(filePath, FileMode.Create))
+            if (file != null)
             {
-                file.CopyTo(filestrem);
+                string filePath = Path.Combine(_host.WebRootPath, "uploads", file.FileName);
+                using (var filestrem = new FileStream(filePath, FileMode.Create))
+                {
+                    file.CopyTo(filestrem);
+                }
+                byte[]? imgBytes = null;
+                using (var memoryStream = new MemoryStream())
+                {
+                    file.CopyTo(memoryStream);
+                    imgBytes = memoryStream.ToArray();
+                }
+                //用這個方式可能會覆蓋相同檔名的圖片
+                //TODO 使用GUID
+                member.FileName = file.FileName;
+                member.FileData = imgBytes;
             }
-            byte[]? imgBytes = null;
-            using (var memoryStream = new MemoryStream())
-            {
-                file.CopyTo(memoryStream);
-                imgBytes = memoryStream.ToArray();
-            }
-            //用這個方式可能會覆蓋相同檔名的圖片
-            //TODO 使用GUID
-            member.FileName = file.FileName;
-            member.FileData = imgBytes;
-
             _context.Members.Add(member);
             _context.SaveChanges();
             return Content("註冊成功!");

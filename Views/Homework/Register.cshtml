@@ -22,6 +22,10 @@
     <div class="mb-3">
         <label for="formFile" class="form-label">選擇檔案</label>
         <input class="form-control" type="file" id="file" name="file">
+        <div id="test"  class="alert alert-info"></div>
+    </div>
+    <div class="mb-3">
+        <img id="showImg" src="" width="200" />
     </div>
     <button id="btnConfirm" type="submit" class="btn btn-outline-dark">送出</button>
 </form>
@@ -36,6 +40,23 @@
 }
 
 @section Scripts{
+    <script>
+        const imgFile = document.querySelector('#file')
+        imgFile.addEventListener('change',()=>{
+             loadimg()
+            $('#test').html(`<p>${imgFile.value}</p>`)
+        })
+        async function loadimg(){
+            const formdata = new FormData(document.userInfo)
+            const resopnse = await fetch
+            ('@Url.Content("/ApiForHomework/getImgStream")',
+            {body:formdata,
+            method:"POST"})
+            const data = await resopnse.blob();
+            const showImg = document.querySelector('#showImg')
+            showImg.src = URL.createObjectURL(data)
+        }
+    </script>
     <script>
         const UserName = document.querySelector('#UserName')
         const UserEmail = document.querySelector('#UserEmail')
@@ -63,17 +84,22 @@
             }) 
         })
 
+        
         btnConfirm.addEventListener('click', event => {
             event.preventDefault();
-            //設定open時要使用POST方式,並使用ApiController中的getdemo() action
-            xhr.open('POST', '/api/register');
-            //設定RequestHeader的Content-Type
-            const formData = new FormData(document.userInfo); //使用name找到form
-            xhr.send(formData);
-            xhr.addEventListener('load', () => {
-                const data = xhr.responseText
-                divResult.innerHTML = data
+            const formData = new FormData(document.userInfo);
+            fetch('@Url.Content("/api/register")', {
+                body: formData,
+                method: "post"
             })
+            .then(response => {
+                    if (response.ok) {
+                        alert('新增成功!')
+                        location.href = '@Url.Content("/Members/index")'
+                    } else {
+                        alert('新增失敗,請確認資料')
+                    }
+                })
         })
     </script>
     }
