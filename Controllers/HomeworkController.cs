@@ -16,5 +16,9 @@ namespace AJAX.Controllers
         {
             return View();
         }
+        public IActionResult SelectCity()
+        {
+            return View();
+        }
     }
 }
