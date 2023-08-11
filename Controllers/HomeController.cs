@@ -49,5 +49,35 @@ namespace AJAX.Controllers
         {
             return View();
         }
+        public IActionResult History()
+        {
+            return View();
+        }
+        public IActionResult jQuery()
+        {
+            return View();
+        }
+        public IActionResult ShipperCors()
+        {
+            return View();
+        }
+        public IActionResult ShipperCorsEmpty()
+        {
+            return View();
+        }
+        public IActionResult partialTest()
+        {
+            //建立view時要選擇"建立成局部檢視" 並 return PartialView();
+            return PartialView();
+            //長在畫面上的兩種方法
+            //1.HtmlHelper : 使用@Html.Partial("partialTest")
+            //2.jQuery : $('#buttonLoad').click(function () { $('#divAlert').load('@Url.Content("~/Home/partialTest")')
+
+        }
+        public IActionResult partialTest2()
+        {
+            ViewBag.message = "我有經過action";
+            return PartialView();
+        }
     }
 }

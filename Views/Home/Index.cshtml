@@ -6,6 +6,10 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+@Html.Partial("partialTest")
+
+@*使用html.partial是直接去view裡面抓partialTest2,沒有經過action,所以Viewbag.message裡面沒有東西*@
+@Html.Partial("partialTest2")
 <table id="emptable" class="table table-bordered table-hover table-striped">
     <thead>
         <tr>

@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewData["Title"] = "jQuery";
+}
+
+<h1>jQuery</h1>
+<button id="buttonGet" class="btn btn-primary">get</button>
+<button id="buttonPost" class="btn btn-secondary">post</button>
+<button id="buttonJson" class="btn btn-success">getJson</button>
+<button id="buttonLoad" class="btn btn-info">load</button>
+<button id="buttonAjax" class="btn btn-warning">ajax</button>
+<button id="buttonCors" class="btn btn-danger">cors</button>
+<div class="alert alert-dark mt-3 w-50" role="alert" id="divAlert">
+    <ul>
+
+    </ul>
+</div>
+@section Scripts{
+    <script>
+        $('#buttonGet').click(function () {
+            //沒有參數可以不用給,有的話這樣給{"name":"gerry","age":"27"}
+            $.get('@Url.Content("~/api/getdemo")',{"name":"gerry","age":"27"},function(data)
+            {
+                $('#divAlert').text(data)
+            })
+            
+        })
+        $('#buttonPost').click(function () {
+            $.post('@Url.Content("~/api/getdemo")', { "name": "henrry", "age": "33" }, function (e) {
+                $('#divAlert').text(e)
+            })
+        })
+        $('#buttonJson').click(function () {
+            //從server端收資料的要求是json格式,所以收到的資料(ddd)不用再轉型,要用each方法將資料呈現在畫面上
+            //$.getJSON('@Url.Content("~/api/City")',function(ddd){
+            //    console.log(ddd)
+            //    const list = $('#divAlert>ul');
+            //    const docFrag = $(document.createDocumentFragment()) 建立一個空元素(容器)
+            //    $.each(ddd,function(index,city){
+            //        console.log(index,city)
+            //        const item = $('<li></li>').text(city)
+            //        docFrag.append(item)
+            //    })
+            //    list.html(docFrag)
+            //})
+
+            $.getJSON('@Url.Content("~/api/District")', { "city":"臺北市" }, function (ddd) {
+                console.log(ddd)
+                $.each(ddd, function (index, district) {
+                    console.log(index, district)
+                })
+            })
+            //$('#divAlert').text("JSON")
+        })
+        $('#buttonLoad').click(function () {
+            $('#divAlert').load('@Url.Content("~/Home/partialTest2")')
+        })
+        $('#buttonAjax').click(function () {
+            $.ajax({
+                'url': '@Url.Content("~/api/City")',
+                'type':'get',
+                //'success':function(ddd){$('#divAlert').text(ddd)} 改成寫在下面的done裡
+                'dataType':'json'
+            }).done(function(ddd){
+                const docFrag = $(document.createDocumentFragment())
+                const list = $('#divAlert>ul');
+                $.each(ddd, function (index, city) {
+                            const item = $('<li></li>').text(city)
+                            docFrag.append(item)
+                }) 
+                list.html(docFrag)
+            })
+               
+        })
+        $('#buttonCors').click(function () {
+            $.getJSON('https://localhost:7295/api/Shippers', function (data) {
+                console.log(data)
+            })
+        })
+
+    </script>
+}
