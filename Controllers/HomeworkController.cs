@@ -20,6 +20,9 @@ namespace AJAX.Controllers
         {
             return View();
         }
-
+        public IActionResult AutoCompelete()
+        {
+            return View();
+        }
     }
 }

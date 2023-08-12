@@ -71,12 +71,12 @@
             xhr.send(formData);
             xhr.addEventListener('load',()=>{
             const data = xhr.responseText
-                if (data === "true") {
+                if (data === "0") {
                     divDanger.innerText = "會員已存在"
                     divDanger.style.display = "inline-block"
                     btnConfirm.setAttribute('disabled', 'disabled')
                 }
-                if (data === "false" || UserName.value ==="") {
+                if (data === "1" || UserName.value ==="") {
                     divDanger.innerText = ""
                     divDanger.style.display = "none"
                     btnConfirm.removeAttribute('disabled')

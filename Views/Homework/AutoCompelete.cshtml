@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewData["Title"] = "AutoCompelete";
+}
+
+<h1>AutoCompelete</h1>
+
+<label for="cityList" class="form-label">選擇縣市</label>
+<input class="form-control" list="cityListOpt" id="cityList" placeholder="Type to search...">
+<datalist id="cityListOpt">
+    
+</datalist>
+
+<label for="districtList" class="form-label">選擇行政區</label>
+<input class="form-control" list="districtListOpt" id="districtList" placeholder="Type to search...">
+<datalist id="districtListOpt">
+    
+</datalist>
+
+<label for="roadList" class="form-label">選擇道路</label>
+<input class="form-control" list="roadListOpt" id="roadList" placeholder="Type to search...">
+<datalist id="roadListOpt">
+    
+</datalist>
+<div class="alert alert-info" id="resultDiv"></div>
+@section Scripts{
+    <script>
+        const cityList = document.querySelector('#cityList');
+        const districtList = document.querySelector('#districtList');
+        const roadList = document.querySelector('#roadList');
+
+        const cityListOpt = document.querySelector('#cityListOpt');
+        const districtListOpt = document.querySelector('#districtListOpt');
+        const roadListOpt = document.querySelector('#roadListOpt');
+
+        const resultDiv = document.querySelector('#resultDiv');
+
+        async function loadCity(){
+            const resopnse = await fetch('@Url.Content("~/api/city")')
+            const datas = await resopnse.json()
+            const cities = datas.map(city=>`<option value="${city}">${city}</option>`)
+            cityListOpt.innerHTML = cities.join("")
+            loadDist()
+        }
+        loadCity()
+
+        async function loadDist(){
+            const resopnse = await fetch(`@Url.Content("~/api/District")?city=${cityList.value}`)
+            const datas = await resopnse.json()
+            const districts = datas.map(district => `<option value="${district}">${district}</option>`)
+            districtListOpt.innerHTML = districts.join("")
+            loadRoad()
+        }
+        async function loadRoad(){
+            const response = await fetch(`@Url.Content("~/api/Road")?siteId=${districtList.value}`)
+            const datas = await response.json()
+        const roads = datas.map(road=>`<option value="${road}">${road}</option>`)
+        roadListOpt.innerHTML=roads.join("")
+        show()
+        }
+
+
+        cityList.addEventListener('focus', () => {
+           cityList.value="";
+            loadDist()
+        })
+        districtList.addEventListener('focus', () => {
+            districtList.value = "";
+            loadRoad()
+        })
+        roadList.addEventListener('focus', () => {
+            roadList.value = "";
+        })
+
+
+        cityList.addEventListener('change',()=>{
+            loadDist()
+        })
+        districtList.addEventListener('change', () => {
+
+            loadRoad()
+        })
+        roadList.addEventListener('change', () => {
+          
+          show()
+        })
+
+        function show() {
+            resultDiv.textContent = `${districtList.value} ${roadList.value}`;
+        }
+    </script>
+}

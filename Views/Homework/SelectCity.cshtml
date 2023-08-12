@@ -25,7 +25,7 @@
         const divResult = document.querySelector('#divResult');
 
         async function loadCity(){
-            const response = await fetch('@Url.Content("/api/city")')
+            const response = await fetch('@Url.Content("~/api/city")')
             const datas = await response.json()
             const cities = datas.map(city => `<option value="${city}">${city}</option>`)
             citySelect.innerHTML = cities.join("")

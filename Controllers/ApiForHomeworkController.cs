@@ -16,12 +16,13 @@ namespace AJAX.Controllers
         public IActionResult CheckValue(Members member)
         {
             bool isMemberExist = _db.Members.Select(n=>n.Name.ToUpper()).Any(n=>n == member.Name.ToUpper());
+           
             if (isMemberExist)
             {
-                return Content("true");
+                return Content("0");
                 //return Content($"{member.Name} 會員已經存在!");
             }
-            return Content("false");   
+            return Content("1");   
             //return Content("新增會員成功");
         }
         public IActionResult getImgStream(IFormFile file) 
